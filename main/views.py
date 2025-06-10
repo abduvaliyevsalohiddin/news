@@ -57,3 +57,9 @@ class AdvertisementListCreateAPIView(ListCreateAPIView):
 class AdvertisementRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
+
+
+# SUBSCRIPTION VIEWS
+class SubscriptionListCreateAPIView(ListCreateAPIView):
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer

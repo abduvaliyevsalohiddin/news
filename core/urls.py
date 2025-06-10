@@ -38,6 +38,10 @@ urlpatterns = [
     # Advertisement
     path('advertisements/', AdvertisementListCreateAPIView.as_view()),
     path('advertisements/<int:pk>/', AdvertisementRetrieveUpdateDestroyAPIView.as_view()),
+
+    # Subscription
+    path('subscription/', SubscriptionListCreateAPIView.as_view()),
+
 ]
 
 if settings.DEBUG:

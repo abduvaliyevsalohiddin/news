@@ -48,3 +48,10 @@ class Advertisement(CoreModel):
 
     def __str__(self):
         return f"{self.name}  &  {self.active_time}"
+
+
+class Subscription(CoreModel):
+    email = models.EmailField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.email}  &  {self.created_date}"
