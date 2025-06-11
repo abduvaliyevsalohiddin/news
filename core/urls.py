@@ -5,6 +5,7 @@ from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import token_obtain_pair, token_refresh
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -19,6 +20,14 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Simple JWT
+    path('token/', token_obtain_pair),
+    path('token/refresh/', token_refresh),
+
+    # Profile
+    path('register/', RegisterAPIView.as_view()),
+    path('profile/', ProfileRetrieveUpdateDestroyView.as_view()),
 
     # Swagger
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0)),
