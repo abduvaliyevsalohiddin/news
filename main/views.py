@@ -80,3 +80,19 @@ class AdvertisementRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 class SubscriptionListCreateAPIView(ListCreateAPIView):
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
+
+
+class VisitsListCreateAPIView(ListCreateAPIView):
+    queryset = Visits.objects.all()
+    serializer_class = VisitsSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+
+        # Har bir obyektning count maydonini 1 taga oshiramiz
+        for obj in queryset:
+            obj.count += 1
+            obj.save(update_fields=["count"])
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)

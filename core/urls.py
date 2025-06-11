@@ -51,6 +51,9 @@ urlpatterns = [
     # Subscription
     path('subscription/', SubscriptionListCreateAPIView.as_view()),
 
+    # Visits
+    path('visits/', VisitsListCreateAPIView.as_view()),
+
 ]
 
 if settings.DEBUG:

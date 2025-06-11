@@ -39,3 +39,9 @@ class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscription
         fields = '__all__'
+
+
+class VisitsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Visits
+        fields = '__all__'

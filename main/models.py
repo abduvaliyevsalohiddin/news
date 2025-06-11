@@ -48,13 +48,21 @@ class Media(CoreModel):
         return f"{self.name}  &  {self.link}"
 
 
+ADVERTISEMENT_TYPE_CHOICES = (
+    ('sidebar', 'sidebar'),
+    ('banner', 'banner')
+)
+
+
 class Advertisement(CoreModel):
     name = models.CharField(max_length=255)
+    advertisement_type = models.CharField(max_length=25, choices=ADVERTISEMENT_TYPE_CHOICES)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='advertisement_image', blank=True, null=True)
     video = models.FileField(upload_to='advertisement_video', blank=True, null=True)
     link = models.CharField(max_length=255, blank=True, null=True)
     active_time = models.DateTimeField(blank=True, null=True)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"{self.name}  &  {self.active_time}"
@@ -65,3 +73,10 @@ class Subscription(CoreModel):
 
     def __str__(self):
         return f"{self.email}  &  {self.created_date}"
+
+
+class Visits(CoreModel):
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.count}"
