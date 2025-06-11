@@ -1,6 +1,6 @@
 from rest_framework.generics import *
 from rest_framework.response import Response
-# from rest_framework.permissions import *
+from rest_framework.permissions import *
 
 from .models import *
 from .serializers import *
@@ -13,8 +13,8 @@ class RegisterAPIView(CreateAPIView):
     queryset = Profile.objects.all()
 
 
-class ProfileRetrieveUpdateDestroyView(RetrieveUpdateAPIView):
-    # permission_classes = (IsAuthenticated,)
+class ProfileRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
 
