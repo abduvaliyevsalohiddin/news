@@ -33,6 +33,7 @@ class News(CoreModel):
     text = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='news_image', null=True, blank=True)
     video = models.FileField(upload_to='news_video', null=True, blank=True)
+    link = models.CharField(max_length=255, blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
