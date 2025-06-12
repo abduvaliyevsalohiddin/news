@@ -59,7 +59,7 @@ class Advertisement(CoreModel):
     advertisement_type = models.CharField(max_length=25, choices=ADVERTISEMENT_TYPE_CHOICES)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='advertisement_image', blank=True, null=True)
-    video = models.FileField(upload_to='advertisement_video', blank=True, null=True)
+    video = models.CharField(max_length=255, blank=True, null=True)
     link = models.CharField(max_length=255, blank=True, null=True)
     active_time = models.DateTimeField(blank=True, null=True)
     active = models.BooleanField(default=True)
